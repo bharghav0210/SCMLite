@@ -1,5 +1,7 @@
 # SCMLite
 A full-stack web application built using FastAPI, MongoDB, and Jinja2 Templates for managing logistics operations. The app supports user authentication, role-based dashboards, and shipment creation functionality with secure form handling and Google reCAPTCHA integration.
+
+
 🚀 Features
 ✅ User Sign Up & Login with password hashing (bcrypt)
 
@@ -17,6 +19,8 @@ A full-stack web application built using FastAPI, MongoDB, and Jinja2 Templates 
 
 
 🛠 Tech Stack
+
+
 Tech	Description
 FastAPI	Web framework for building APIs
 MongoDB	NoSQL database for user and shipment data
