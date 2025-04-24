@@ -3,6 +3,7 @@ A full-stack web application built using FastAPI, MongoDB, and Jinja2 Templates 
 
 
 🚀 Features
+
 ✅ User Sign Up & Login with password hashing (bcrypt)
 
 ✅ Google reCAPTCHA verification for login security
@@ -22,10 +23,17 @@ A full-stack web application built using FastAPI, MongoDB, and Jinja2 Templates 
 
 
 Tech	Description
+
 FastAPI	Web framework for building APIs
+
 MongoDB	NoSQL database for user and shipment data
+
 Jinja2	Server-side HTML templating
+
 HTML/CSS	Frontend styling and forms
+
 SessionMiddleware	Manages user sessions
+
 Passlib	Secure password hashing
+
 Google reCAPTCHA v2	Bot protection on login
