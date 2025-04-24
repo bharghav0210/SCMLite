@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Shipment</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='create_shipment.css') }}">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('/static/create_shipment_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .create-shipment-wrapper {
+      background-color: rgba(255, 255, 255, 0.96);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      max-width: 950px;
+      width: 100%;
+    }
+
+    .create-shipment-card h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #fff;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .submit-btn, .clear-btn {
+      padding: 12px 24px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background-color: #1e8449;
+    }
+
+    .clear-btn {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .clear-btn:hover {
+      background-color: #c0392b;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="create-shipment-wrapper">
+    <div class="create-shipment-card">
+      <h2>Create New Shipment</h2>
+      <form action="/create-shipment" method="post">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="shipment_id">Shipment Number</label>
+            <input type="text" id="shipment_id" name="shipment_id" required>
+          </div>
+          <div class="form-group">
+            <label for="po_number">PO Number</label>
+            <input type="text" id="po_number" name="po_number" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="origin">Origin</label>
+            <input type="text" id="origin" name="origin" required>
+          </div>
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" name="destination" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="route_details">Route Details</label>
+            <select id="route_details" name="route_details" required>
+              <option value="Delhi - Mumbai">Delhi - Mumbai</option>
+              <option value="Hyderabad - Bangalore">Hyderabad - Bangalore</option>
+              <option value="Chennai - Pune">Chennai - Pune</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="device">Device</label>
+            <select id="device" name="device" required>
+              <option value="Sensor A">Sensor A</option>
+              <option value="Sensor B">Sensor B</option>
+              <option value="Sensor C">Sensor C</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+              <option value="In Transit">In Transit</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ndc_number">NDC Number</label>
+            <input type="text" id="ndc_number" name="ndc_number" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="serial_number">Serial Number</label>
+            <input type="text" id="serial_number" name="serial_number" required>
+          </div>
+          <div class="form-group">
+            <label for="container_number">Container Number</label>
+            <input type="text" id="container_number" name="container_number" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="goods_type">Goods Type</label>
+            <select id="goods_type" name="goods_type" required>
+              <option value="Pharma">Pharma</option>
+              <option value="Food">Food</option>
+              <option value="Electronics">Electronics</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="expected_delivery_date">Expected Delivery Date</label>
+            <input type="date" id="expected_delivery_date" name="expected_delivery_date" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="delivery_number">Delivery Number</label>
+            <input type="text" id="delivery_number" name="delivery_number" required>
+          </div>
+          <div class="form-group">
+            <label for="batch_id">Batch ID</label>
+            <input type="text" id="batch_id" name="batch_id" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="shipment_description">Shipment Description</label>
+          <textarea id="shipment_description" name="shipment_description" required></textarea>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="submit-btn">Create Shipment</button>
+          <button type="reset" class="clear-btn">Clear Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

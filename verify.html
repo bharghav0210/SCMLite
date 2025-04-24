@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SCMXpertLite - Verify 2FA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="verify-container">
+  <h2>2-Factor Authentication</h2>
+  <p>Enter the 6-digit code from your authenticator app.</p>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash">{{ messages[0] }}</div>
+    {% endif %}
+  {% endwith %}
+  <form method="POST">
+    <input type="text" name="token" placeholder="Enter 2FA code" required>
+    <button type="submit">VERIFY</button>
+  </form>
+</div>
+</body>
+</html>

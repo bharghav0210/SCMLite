@@ -1,0 +1,156 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('/static/supply_chain_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Headings */
+h2, h3 {
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+/* Shipment Card */
+.create-shipment-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.create-shipment-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 900px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Layout */
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+input, select, textarea {
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #fdfdfd;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Buttons */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn {
+  background-color: #27ae60;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #1e8449;
+}
+
+.clear-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.clear-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Utility */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Flash Messages */
+.flash {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 5px solid #ffeeba;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
