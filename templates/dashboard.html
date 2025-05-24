@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='dashboard.css') }}">
+</head>
+<body>
+<div class="dashboard-container">
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+        <div class="brand">
+            <img src="/static/logo.jpg" alt="Logo" />
+            <h1>Exafluence</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/create-shipment">New Shipment</a>
+            <a href="/account">My Account</a>
+            <a class="logout-btn" href="/logout">Log out</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h2>Hi User, Welcome to SCMLite</h2>
+        <div class="panel-container">
+            <div class="panel left-panel">
+                <h3>Create a New Shipment</h3>
+                <button class="btn" onclick="window.location.href='/create-shipment'">Create Shipment</button>
+            </div>
+            <div class="panel right-panel">
+                <h3>My Account</h3>
+                <button class="btn" onclick="window.location.href='/account'">Get your Account Details</button>
+            </div>
+        </div>
+    </main>
+
+</div>
+</body>
+</html>

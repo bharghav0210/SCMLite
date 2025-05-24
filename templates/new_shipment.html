@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create New Shipment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <div class="brand">
+        <img src="/static/logo.jpg" alt="Logo" />
+        <h1>Exafluence</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/account">My Account</a>
+        <a href="/shipments">My Shipment</a>
+        <a href="/new-shipment" class="active">New Shipment</a>
+        <a href="/device-data">Device Data</a>
+        <a class="logout-btn" href="/logout">Log out</a>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <div class="logo">e✘f</div>
+      <nav>
+        <a href="/dashboard"><i class="icon">🏠</i></a>
+        <a href="/account"><i class="icon">👤</i></a>
+        <a href="/shipments"><i class="icon">📦</i></a>
+        <a href="/new-shipment" class="active"><i class="icon">➕</i></a>
+        <a href="/device-data"><i class="icon">📊</i></a>
+      </nav>
+      <a class="logout" href="/logout">🔴</a>
+    </aside>
+
+    <main class="content">
+      <h2>Create New Shipment</h2>
+      <p class="form-note">Please fill all the details.</p>
+      <form method="POST" action="/new-shipment" class="shipment-form">
+        <div class="form-grid">
+          <div>
+            <label>Shipment Number*</label>
+            <input type="text" name="shipment_number" required />
+            <label>Route Details*</label>
+            <select name="route" required>
+              <option>Select Route</option>
+              <option>Route A</option>
+              <option>Route B</option>
+            </select>
+            <label>Device*</label>
+            <select name="device" required>
+              <option>Select Device</option>
+              <option>Device A</option>
+              <option>Device B</option>
+            </select>
+            <label>PO Number*</label>
+            <input type="text" name="po_number" required />
+            <label>NDC Number*</label>
+            <input type="text" name="ndc_number" required />
+            <label>Serial number of Goods*</label>
+            <input type="text" name="serial_goods" required />
+          </div>
+          <div>
+            <label>Container Number*</label>
+            <input type="text" name="container_number" required />
+            <label>Goods Type*</label>
+            <select name="goods_type" required>
+              <option>Select Goods</option>
+              <option>Electronics</option>
+              <option>Pharma</option>
+            </select>
+            <label>Expected Delivery Date*</label>
+            <input type="date" name="delivery_date" required />
+            <label>Delivery Number*</label>
+            <input type="text" name="delivery_number" required />
+            <label>Batch ID*</label>
+            <input type="text" name="batch_id" required />
+            <label>Shipment Description*</label>
+            <textarea name="description" required></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">CREATE SHIPMENT</button>
+          <button type="reset" class="btn-danger">CLEAR DETAILS</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

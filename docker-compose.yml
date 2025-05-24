@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-1
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+    ports:
+      - "8000:8000"
+
+
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile.producer
+    container_name: producer-1
+    depends_on:
+      - kafka
+
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile.consumer
+    container_name: consumer-1
+    depends_on:
+      - kafka
+
+  socketserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.socketserver
+    container_name: socketserver-1
+    ports:
+      - "5050:5050"
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka-1
+    environment:
+      - KAFKA_KRAFT_MODE=true
+      - KAFKA_CLUSTER_ID=cluster-1
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/bitnami/kafka
+
+volumes:
+  kafka_data:

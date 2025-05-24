@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdfcfb;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: linear-gradient(to right, #c1dfff, #f5e1ff);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .brand h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #4b4453;
+      margin: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a, .nav-menu summary {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2f2f2f;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .nav-menu a:hover, summary:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    details {
+      position: relative;
+    }
+
+    details[open] summary::after {
+      content: "▲";
+      font-size: 10px;
+      margin-left: 6px;
+    }
+
+    summary::after {
+      content: "▼";
+      font-size: 10px;
+      margin-left: 6px;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 45px;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      z-index: 100;
+    }
+
+    .dropdown-content a {
+      padding: 10px 16px;
+      color: #333;
+      background-color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .logout-btn {
+      background-color: #ff8c8c;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .logout-btn:hover {
+      background-color: #ff6b6b;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px 60px;
+      background: #fffafc;
+      overflow-y: auto;
+    }
+
+    .main-content h2 {
+      font-size: 26px;
+      margin-bottom: 30px;
+      color: #2b2b2b;
+    }
+
+    .panel-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .panel {
+      background: white;
+      min-width: 280px;
+      max-width: 360px;
+      height: 230px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+    }
+
+    .panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .panel .btn {
+      padding: 10px 22px;
+      background-color: #a78bfa;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .panel .btn:hover {
+      background-color: #8b5cf6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <!-- Top Navigation -->
+    <div class="topbar">
+      <div class="brand">
+        <img src="/static/logo_1.jpg" alt="Logo" />
+        <h1>Admin Dashboard</h1>
+      </div>
+      <div class="nav-menu">
+        <a href="/admin-dashboard">Home</a>
+
+        <details>
+          <summary>Manage Shipment</summary>
+          <div class="dropdown-content">
+            <a href="/create-shipment">Create Shipment</a>
+            <a href="/edit-shipment">Edit Shipment</a>
+          </div>
+        </details>
+
+        <a href="/user_management">Users</a>
+        <a href="/device-data">Device Data</a>
+        <a class="logout-btn" href="/logout">Logout</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2>Welcome, Admin</h2>
+      <div class="panel-container">
+        <div class="panel">
+          <h3>Manage Shipment</h3>
+          <a href="/edit-shipment" class="btn">Go to Shipments</a>
+        </div>
+        <div class="panel">
+          <h3>User Management</h3>
+          <a href="/user_management" class="btn">Manage Users</a>
+        </div>
+        <div class="panel">
+          <h3>Device Data</h3>
+          <a href="/device-data" class="btn">View Device Data</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

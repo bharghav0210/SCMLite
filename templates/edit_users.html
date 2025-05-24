@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit User Role</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      padding: 40px;
+    }
+
+    .edit-role-container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 20px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background-color: #3498db;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .flash {
+      text-align: center;
+      background-color: #eafaf1;
+      border: 1px solid #2ecc71;
+      color: #2ecc71;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="edit-role-container">
+    <h2>Edit User</h2>
+    {% if flash %}
+    <div class="flash">{{ flash }}</div>
+    {% endif %}
+
+    <form action="/update-user/{{ user.email }}" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" value="{{ user.name }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="new_email">Email:</label>
+        <input type="email" id="new_email" name="new_email" value="{{ user.email }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+          <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+          <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+        </select>
+      </div>
+
+      <button type="submit">Update User</button>
+    </form>
+  </div>
+</body>
+</html>

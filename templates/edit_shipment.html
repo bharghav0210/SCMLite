@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Shipments</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='edit_shipments.css') }}">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: linear-gradient(to right, #c1dfff, #f5e1ff);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 50px;
+      margin-right: 10px;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      color: #4b4453;
+      margin: 0;
+    }
+
+    .nav-menu a, .logout-btn {
+      margin-left: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #2f2f2f;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .logout-btn {
+      background-color: #ff8c8c;
+      color: white;
+      border: none;
+    }
+
+    .logout-btn:hover {
+      background-color: #ff6b6b;
+    }
+
+    .container {
+      padding: 130px 20px 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .edit-shipment-wrapper {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #050505;
+    }
+
+    th {
+      background: #f5f5f5;
+      cursor: pointer;
+    }
+
+    .action-buttons a {
+      padding: 6px 12px;
+      margin: 0 3px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .action-buttons a.edit {
+      background: #3498db;
+    }
+
+    .action-buttons a.delete {
+      background: #e74c3c;
+    }
+
+    .export-btn, #searchInput {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 200px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover, .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <img src="/static/logo_1.jpg" alt="Logo" />
+    <h1>Shipment Dashboard</h1>
+  </div>
+  <div class="nav-menu">
+    <a href="/admin-dashboard">Home</a>
+    <a href="/create-shipment">Create Shipment</a>
+    <a href="/user_management">Users</a>
+    <a href="/device-data">Device Data</a>
+    <button class="logout-btn" onclick="window.location.href='/logout'">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="edit-shipment-wrapper">
+    <h2>Edit Shipments</h2>
+
+    <input type="text" id="searchInput" placeholder="Search shipments...">
+    <button class="export-btn" onclick="downloadTableAsCSV()">Download CSV</button>
+    <button class="export-btn" onclick="downloadTableAsExcel()">Download Excel</button>
+
+    <table id="shipmentTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Shipment ID</th>
+          <th onclick="sortTable(1)">PO Number</th>
+          <th onclick="sortTable(2)">Route</th>
+          <th onclick="sortTable(3)">Device</th>
+          <th onclick="sortTable(4)">Goods Type</th>
+          <th onclick="sortTable(5)">Delivery Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="shipmentTableBody">
+        {% for shipment in shipments %}
+        <tr>
+          <td>{{ shipment.shipment_id }}</td>
+          <td>{{ shipment.po_number }}</td>
+          <td>{{ shipment.route_details }}</td>
+          <td>{{ shipment.device }}</td>
+          <td>{{ shipment.goods_type }}</td>
+          <td>{{ shipment.expected_delivery_date }}</td>
+          <td class="action-buttons">
+            <a href="#" class="edit" onclick="openModal('{{ shipment.shipment_id }}')">Edit</a>
+            <a href="/delete-shipment/{{ shipment.shipment_id }}" class="delete" onclick="return confirm('Are you sure you want to delete this shipment?');">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Edit Shipment</h2>
+    <form id="editForm" method="post">
+      <input type="hidden" name="shipment_id" id="modal_shipment_id">
+      <label>PO Number</label>
+      <input type="text" name="po_number" required>
+      <label>Route Details</label>
+      <select name="route_details" required>
+        <option value="Delhi - Mumbai">Delhi - Mumbai</option>
+        <option value="Hyderabad - Bangalore">Hyderabad - Bangalore</option>
+        <option value="Chennai - Pune">Chennai - Pune</option>
+      </select>
+      <label>Device</label>
+      <select name="device" required>
+        <option value="Sensor A">Sensor A</option>
+        <option value="Sensor B">Sensor B</option>
+        <option value="Sensor C">Sensor C</option>
+      </select>
+      <label>NDC Number</label>
+      <input type="text" name="ndc_number" required>
+      <label>Serial Number</label>
+      <input type="text" name="serial_number" required>
+      <label>Container Number</label>
+      <input type="text" name="container_number" required>
+      <label>Goods Type</label>
+      <select name="goods_type" required>
+        <option value="Pharma">Pharma</option>
+        <option value="Food">Food</option>
+        <option value="Electronics">Electronics</option>
+      </select>
+      <label>Expected Delivery Date</label>
+      <input type="date" name="expected_delivery_date" required>
+      <label>Delivery Number</label>
+      <input type="text" name="delivery_number" required>
+      <label>Batch ID</label>
+      <input type="text" name="batch_id" required>
+      <label>Origin</label>
+      <input type="text" name="origin" required>
+      <label>Destination</label>
+      <input type="text" name="destination" required>
+      <label>Status</label>
+      <select name="status" required>
+        <option value="Created">Created</option>
+        <option value="In Transit">In Transit</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+      <label>Shipment Description</label>
+      <textarea name="shipment_description" required></textarea>
+      <button type="submit">Update Shipment</button>
+    </form>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+function sortTable(n) {
+  var table = document.getElementById("shipmentTable"), switching = true, dir = "asc", switchcount = 0;
+  while (switching) {
+    switching = false;
+    var rows = table.rows;
+    for (var i = 1; i < (rows.length - 1); i++) {
+      var x = rows[i].getElementsByTagName("TD")[n], y = rows[i + 1].getElementsByTagName("TD")[n], shouldSwitch = false;
+      if (dir === "asc" ? x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase() : x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        shouldSwitch = true; break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true; switchcount++;
+    } else if (switchcount === 0 && dir === "asc") {
+      dir = "desc"; switching = true;
+    }
+  }
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function() {
+  var input = this.value.toLowerCase(), rows = document.querySelectorAll("#shipmentTableBody tr");
+  rows.forEach(function(row) {
+    row.style.display = row.textContent.toLowerCase().includes(input) ? "" : "none";
+  });
+});
+
+function openModal(shipmentId) {
+  document.getElementById("editModal").style.display = "block";
+  document.getElementById("modal_shipment_id").value = shipmentId;
+}
+
+function closeModal() {
+  document.getElementById("editModal").style.display = "none";
+}
+
+// CSV Export
+function downloadTableAsCSV(filename = 'shipments.csv') {
+  const table = document.getElementById("shipmentTable");
+  let csv = [];
+  for (let i = 0; i < table.rows.length; i++) {
+    let row = [], cols = table.rows[i].querySelectorAll("td, th");
+    for (let j = 0; j < cols.length - 1; j++) {  // Skip last column (Action)
+      row.push('"' + cols[j].innerText.replace(/"/g, '""') + '"');
+    }
+    csv.push(row.join(","));
+  }
+  const csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(csvFile);
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Excel Export
+function downloadTableAsExcel(filename = 'shipments.xls') {
+  const table = document.getElementById("shipmentTable");
+  let html = "<table border='1'>" + table.innerHTML + "</table>";
+  const blob = new Blob(["\ufeff", html], { type: "application/vnd.ms-excel" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+
+</body>
+</html>

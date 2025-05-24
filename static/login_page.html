@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCMXPertLite - Auth</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 850px;
+            height: auto;
+            min-height: 520px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .left, .right {
+            flex: 1;
+            padding: 40px;
+            min-width: 350px;
+        }
+        .left {
+            background: linear-gradient(135deg, #fdfbfb, #ebedee);
+        }
+        .right {
+            background-color: #1f3c88;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .btn {
+            padding: 12px 20px;
+            background-color: #3e64ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #2a47c7;
+        }
+        .right .btn {
+            background: transparent;
+            border: 2px solid white;
+            margin-top: 20px;
+        }
+        .right .btn:hover {
+            background: white;
+            color: #1f3c88;
+        }
+        .note {
+            font-size: 12px;
+            margin: 10px 0;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>SCMXPertLite</h1>
+            <h2>Create Account</h2>
+            <form method="POST" action="/register">
+                <div class="form-group">
+                    <label>What should we call you?*</label>
+                    <input type="text" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email address*</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Create a New password*</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm New password*</label>
+                    <input type="password" name="confirm_password" required>
+                </div>
+                <p class="note">I have read and accept the Privacy Policy & Conditions of use</p>
+                <button class="btn" type="submit">SIGN UP</button>
+            </form>
+        </div>
+        <div class="right">
+            <h1>Welcome back!</h1>
+            <p>Welcome back! Please login with your personal info.</p>
+            <a href="/login"><button class="btn">SIGN IN</button></a>
+        </div>
+    </div>
+</body>
+</html>

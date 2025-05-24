@@ -1,0 +1,18 @@
+# Use the official lightweight Python image
+FROM python:3.12-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Python script into the container
+COPY server.py .
+
+# Expose the port the server listens on
+EXPOSE 5050
+
+# Command to run the server
+CMD ["python", "server.py"]

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="5">
+  <title>Device Data - Admin Dashboard</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdfcfb;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: linear-gradient(to right, #c1dfff, #f5e1ff);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .brand h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #4b4453;
+      margin: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a, .nav-menu summary {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2f2f2f;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .nav-menu a:hover, summary:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    details {
+      position: relative;
+    }
+
+    details[open] summary::after {
+      content: "▲";
+      font-size: 10px;
+      margin-left: 6px;
+    }
+
+    summary::after {
+      content: "▼";
+      font-size: 10px;
+      margin-left: 6px;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 45px;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      z-index: 100;
+    }
+
+    .dropdown-content a {
+      padding: 10px 16px;
+      color: #333;
+      background-color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .logout-btn {
+      background-color: #ff8c8c;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .logout-btn:hover {
+      background-color: #ff6b6b;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px 60px;
+      background: #fffafc;
+      overflow-y: auto;
+    }
+
+    .main-content h2 {
+      font-size: 26px;
+      margin-bottom: 30px;
+      color: #2b2b2b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #a78bfa;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="brand">
+        <img src="/static/logo_1.jpg" alt="Logo" />
+        <h1>Admin Dashboard</h1>
+      </div>
+      <div class="nav-menu">
+        <a href="/admin-dashboard">Home</a>
+        <details>
+          <summary>Manage Shipment</summary>
+          <div class="dropdown-content">
+            <a href="/create-shipment">Create Shipment</a>
+            <a href="/edit-shipment">Edit Shipment</a>
+          </div>
+        </details>
+        <a href="/user_management">Users</a>
+        <a href="/device-data">Device Data</a>
+        <a class="logout-btn" href="/logout">Logout</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2>Device Data </h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Device ID</th>
+            <th>Battery Level</th>
+            <th>Temperature (°C)</th>
+            <th>Route From</th>
+            <th>Route To</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in data %}
+          <tr>
+            <td>{{ entry.Device_ID }}</td>
+            <td>{{ entry.Battery_Level }}</td>
+            <td>{{ entry.First_Sensor_temperature }}</td>
+            <td>{{ entry.Route_From }}</td>
+            <td>{{ entry.Route_To }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
