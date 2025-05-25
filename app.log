@@ -11,3 +11,23 @@
 2025-05-22 14:50:09,791 - app - INFO - Editing user: divya@exf.com
 2025-05-24 10:05:05,807 - app - INFO - Signup endpoint accessed
 2025-05-24 10:05:06,750 - app - INFO - Signup endpoint accessed
+2025-05-24 17:55:47,021 - app - INFO - Root endpoint accessed
+2025-05-24 17:55:47,135 - app - INFO - Login endpoint accessed
+2025-05-24 17:55:57,582 - app - INFO - Login form submitted
+2025-05-24 17:56:00,008 - app - INFO - Login successful
+2025-05-24 17:56:00,217 - app - INFO - Dashboard endpoint accessed by user1@exf.com
+2025-05-24 17:56:04,440 - app - INFO - Create shipment endpoint accessed by user1@exf.com
+2025-05-24 17:56:07,336 - app - INFO - Account page accessed by user1@exf.com
+2025-05-24 17:56:09,017 - app - INFO - Dashboard endpoint accessed by user1@exf.com
+2025-05-24 17:56:19,492 - app - INFO - Logout endpoint accessed
+2025-05-24 17:56:19,508 - app - INFO - Login endpoint accessed
+2025-05-24 17:56:25,644 - app - INFO - Login endpoint accessed
+2025-05-24 17:57:34,864 - app - INFO - Login form submitted
+2025-05-24 17:57:36,464 - app - INFO - Login successful
+2025-05-24 17:57:36,566 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-24 17:57:39,395 - app - INFO - Edit shipment endpoint accessed by bharghav@exaf.com
+2025-05-24 17:57:43,209 - app - INFO - Edit shipment endpoint accessed by bharghav@exaf.com
+2025-05-24 17:57:45,755 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-24 17:57:50,395 - app - INFO - Assign admin endpoint accessed for user1@exf.com by bharghav@exaf.com
+2025-05-24 17:57:50,601 - app - INFO - user1@exf.com assigned admin role by bharghav@exaf.com
+2025-05-24 17:57:50,699 - app - INFO - User management endpoint accessed by bharghav@exaf.com
