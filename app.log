@@ -31,3 +31,4 @@
 2025-05-24 17:57:50,395 - app - INFO - Assign admin endpoint accessed for user1@exf.com by bharghav@exaf.com
 2025-05-24 17:57:50,601 - app - INFO - user1@exf.com assigned admin role by bharghav@exaf.com
 2025-05-24 17:57:50,699 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-24 18:18:34,141 - app - INFO - Login endpoint accessed
