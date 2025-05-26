@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:9092")
 # MongoDB connection URI from .env
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://bhargavmadhiraju123:Bharghav123@cluster0.p6h7hjw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") 
+MONGO_URI = MONGO_URI = os.getenv("MONGO_URI") 
 # Connect to MongoDB
 while True:
     try:
