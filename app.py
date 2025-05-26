@@ -16,14 +16,8 @@ import logging
 from dotenv import load_dotenv
 import os
 
+# Load environment variables from .env file
 load_dotenv() 
-# --- Load environment variables ---
-# You've already loaded these. Ensure your .env has SECRET_KEY and ALGORITHM.
-# For example:
-# JWT_SECRET_KEY="your_super_secret_jwt_key_that_is_at_least_32_chars_long"
-# JWT_ALGORITHM="HS256"
-# ACCESS_TOKEN_EXPIRE_MINUTES="30" # Or whatever you prefer
-
 SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 ALGORITHM = os.getenv("JWT_ALGORITHM")
 raw_expire_minutes = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "10")
