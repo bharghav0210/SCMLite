@@ -32,3 +32,66 @@
 2025-05-24 17:57:50,601 - app - INFO - user1@exf.com assigned admin role by bharghav@exaf.com
 2025-05-24 17:57:50,699 - app - INFO - User management endpoint accessed by bharghav@exaf.com
 2025-05-24 18:18:34,141 - app - INFO - Login endpoint accessed
+2025-05-25 21:13:40,548 - app - INFO - Root endpoint accessed
+2025-05-25 21:13:40,611 - app - INFO - Login endpoint accessed
+2025-05-25 21:13:51,127 - app - INFO - Login form submitted
+2025-05-25 21:13:53,573 - app - INFO - Login successful
+2025-05-25 21:13:53,639 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-25 21:13:56,098 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-25 21:13:58,675 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:00,317 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:03,076 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:05,405 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:10,520 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:16,012 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:21,172 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-25 21:14:23,841 - app - INFO - Logout endpoint accessed
+2025-05-25 21:14:23,854 - app - INFO - Login endpoint accessed
+2025-05-25 21:14:33,858 - app - INFO - Login form submitted
+2025-05-25 21:14:34,650 - app - INFO - Login successful
+2025-05-25 21:14:34,697 - app - INFO - Admin dashboard endpoint accessed by user1@exf.com
+2025-05-25 21:14:37,169 - app - INFO - Edit shipment endpoint accessed by user1@exf.com
+2025-05-25 21:14:41,184 - app - INFO - User management endpoint accessed by user1@exf.com
+2025-05-25 21:14:55,508 - app - INFO - Logout endpoint accessed
+2025-05-25 21:14:55,516 - app - INFO - Login endpoint accessed
+2025-05-25 21:15:07,922 - app - INFO - Login form submitted
+2025-05-25 21:15:08,751 - app - INFO - Login successful
+2025-05-25 21:15:08,817 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-25 21:15:10,400 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-25 21:15:14,088 - app - INFO - Edit user endpoint accessed for user1@exf.com by bharghav@exaf.com
+2025-05-25 21:15:17,860 - app - INFO - Update user form submitted for user1@exf.com by bharghav@exaf.com
+2025-05-25 21:15:17,918 - app - INFO - User user1@exf.com updated successfully by bharghav@exaf.com
+2025-05-25 21:15:17,965 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-25 21:15:23,682 - app - INFO - Logout endpoint accessed
+2025-05-25 21:15:23,691 - app - INFO - Login endpoint accessed
+2025-05-25 21:15:34,398 - app - INFO - Login form submitted
+2025-05-25 21:15:35,129 - app - INFO - Login successful
+2025-05-25 21:15:35,181 - app - INFO - Dashboard endpoint accessed by user1@exf.com
+2025-05-25 21:49:41,849 - app - INFO - Login endpoint accessed
+2025-05-26 09:22:07,440 - app - INFO - Login endpoint accessed
+2025-05-26 09:22:31,401 - app - INFO - Login form submitted
+2025-05-26 09:22:33,091 - app - INFO - Login successful
+2025-05-26 09:22:33,140 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-26 09:22:38,449 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-26 09:22:40,507 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-26 09:22:49,480 - app - INFO - Edit user endpoint accessed for divya@exf.com by bharghav@exaf.com
+2025-05-26 09:22:53,814 - app - INFO - Update user form submitted for divya@exf.com by bharghav@exaf.com
+2025-05-26 09:22:53,916 - app - INFO - User divya@exf.com updated successfully by bharghav@exaf.com
+2025-05-26 09:22:54,021 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-26 10:13:55,830 - app - INFO - Root endpoint accessed
+2025-05-26 10:13:56,130 - app - INFO - Login endpoint accessed
+2025-05-26 10:14:13,522 - app - INFO - Login form submitted
+2025-05-26 10:14:14,371 - app - INFO - Login successful
+2025-05-26 10:14:14,407 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-26 10:14:16,465 - app - INFO - Device data endpoint accessed by bharghav@exaf.com
+2025-05-26 10:14:18,392 - app - INFO - User management endpoint accessed by bharghav@exaf.com
+2025-05-26 10:14:20,484 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-26 10:14:22,196 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
+2025-05-26 10:14:26,379 - app - INFO - Logout endpoint accessed
+2025-05-26 10:14:26,385 - app - INFO - Login endpoint accessed
+2025-05-26 10:14:30,936 - app - INFO - Login endpoint accessed
+2025-05-26 10:50:12,676 - app - INFO - Root endpoint accessed
+2025-05-26 10:50:12,676 - app - INFO - Login endpoint accessed
+2025-05-26 10:50:21,590 - app - INFO - Login form submitted
+2025-05-26 10:50:22,897 - app - INFO - Login successful
+2025-05-26 10:50:22,966 - app - INFO - Admin dashboard endpoint accessed by bharghav@exaf.com
