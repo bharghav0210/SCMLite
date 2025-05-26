@@ -13,7 +13,10 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 import jwt
 from jwt.exceptions import PyJWTError
 import logging
+from dotenv import load_dotenv
+import os
 
+load_dotenv() 
 # --- Load environment variables ---
 # You've already loaded these. Ensure your .env has SECRET_KEY and ALGORITHM.
 # For example:
